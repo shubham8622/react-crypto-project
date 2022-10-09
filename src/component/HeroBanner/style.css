@@ -1,0 +1,77 @@
+section {
+    padding: 8rem 0;
+    height: 100vh;
+}
+.hero-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+.banner-content {
+    color: #ffffff;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+    padding: 2rem 0;
+    width: 55rem;
+}
+.banner-btn li#Dashboard,
+.banner-btn li#Share {
+    width: 10rem;
+    text-align: center;
+}
+#Dashboard a {
+    background-color: #3a80e9;
+    color: #ffffff!important;
+    padding: 0.7rem;
+    border-radius: 10rem;
+    display: block;
+    text-decoration: none;
+}
+#Share a{
+    background-color: none;
+    border: 2px solid #3a80e9;
+    color: #ffffff!important;
+    padding: 0.7rem;
+    border-radius: 10rem;
+    display: block;
+    text-decoration: none;
+}
+.banner-content h2 {
+    font-size: 8rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.banner-content h2 span{
+    color: #3a80e9;
+}
+.banner-content p {
+    font-size: 0.9rem;
+    color: #474747;
+}
+.banner-btn {
+    display: flex;
+    justify-content: flex-start;
+    gap: 3rem;
+    align-items: center;
+}
+.hero-image{
+    position: relative;
+    width: 18rem;
+}
+.hero-image img{
+    max-width: 100%;
+}
+.mobile {
+    position: absolute;
+    z-index: 1;
+    right: 8rem;
+}
+img.mobile-background {
+    top: 7.5rem;
+    position: absolute;
+    right: 5rem;
+}
+

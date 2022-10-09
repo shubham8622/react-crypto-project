@@ -1,38 +1,101 @@
-.App {
-  text-align: center;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.bars{
+  display: none;
+}
+body{
+  background-color: #111111;
+}
+.container{
+  max-width: 1400px;
+  padding-inline: 1rem;
+  margin-inline: auto;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+/* Responsive css */
+
+@media (max-width: 1280px){
+  .banner-content{
+    width: 40rem !important;
+  }
+  .banner-content h2 {
+    font-size: 6rem !important;
+  }
+  .hero-image {
+    width: 16rem!important;
+  }
+  img.mobile-background {
+    top: 6.5rem!important;
+    right: 5rem;
   }
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+@media (max-width: 1060px){
+  .banner-content{
+    width: 32rem !important;
   }
-  to {
-    transform: rotate(360deg);
+  .banner-content h2 {
+    font-size: 5rem !important;
+  }
+  .hero-image {
+    width: 14rem!important;
+  }
+  img.mobile-background {
+    top: 6rem;
+    right: 6rem;
+  }
+}
+
+@media (max-width: 900px){
+    .hero-image{
+      display: none;
+    }
+    .hero-banner {
+      display: flex!important;
+      justify-content: center!important;
+      align-items: center!important;
+    }
+    .banner-content{
+      align-items: center!important;
+    }
+    .banner-content h2{
+      align-items: center!important;
+    }
+}
+
+@media (max-width:700px){
+  .bars{
+    display: block;
+    color: #ffffff;
+  }
+  header nav .navigation{
+    display: none;
+  }
+  .banner-content{
+    width: 26rem !important;
+  }
+  .banner-content h2 {
+    font-size: 4rem !important;
+  }
+  .banner-content p {
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+  }
+} 
+
+@media (max-width:445px){
+  .banner-content h2 {
+    font-size: 2.5rem !important;
+  }
+  .banner-btn {
+    flex-direction: column;
+  }
+  .banner-content{
+    gap: 2rem;
   }
 }

@@ -1,0 +1,18 @@
+.search {
+    padding: 4rem 0 1rem 0;
+    height: auto;
+}
+.crypto-list-view h1{
+    color: #888888;
+    font-size: 1rem;
+    text-transform: capitalize;
+}
+.list-grid{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
+    color: #ffffff;
+    text-transform: capitalize;
+    font-weight: 800;
+}
