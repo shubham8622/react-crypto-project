@@ -14,11 +14,42 @@ body{
   padding-inline: 1rem;
   margin-inline: auto;
 }
-
 .view{
   padding: 8rem 0 0 0;
 }
 
+.crypto-pagination{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 0;
+}
+.crypto-pagination button {
+  padding: 0.5rem 1rem;
+}
+button.active{
+  background-color: #3a80e9;
+  color: #ffffff;
+  cursor: pointer;
+}
+.crypto-links{
+  color: #ffffff;
+  text-decoration: none;
+}
+.list-view .crypto-links{
+  width: 100%;
+}
+section.detail-view{
+  padding: 10rem 0 4rem 0;
+}
+section.search-view {
+  padding: 4rem 0;
+}
+.no-coin-found {
+  margin-inline: auto;
+  color: #ffffff;
+}
 /* Responsive css */
 
 @media (max-width: 1280px){

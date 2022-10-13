@@ -15,7 +15,7 @@ const HeroBanner = () => {
     ];
   return (
     <>
-        <section>
+        <section className='hero'>
             <div className="container">
                 <div className="hero-banner">
                     <div className="banner-content">

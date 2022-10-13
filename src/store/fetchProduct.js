@@ -13,9 +13,6 @@ const productSlice = createSlice({
         data:[],
         status:STATUSES.IDEL,
     },
-    reducers:{
-        
-    },
     extraReducers: (builder) =>{
         builder
         .addCase(fetchProducts.pending,(state,action)=>{
@@ -30,8 +27,6 @@ const productSlice = createSlice({
         })
     }
 })
-
-export const {setProduct} = productSlice.actions;
 export default productSlice.reducer;
 
 export const fetchProducts = createAsyncThunk('/product/fetch',async()=>{
