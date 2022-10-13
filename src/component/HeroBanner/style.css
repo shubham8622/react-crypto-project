@@ -43,6 +43,8 @@ section {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: #0d0c0c;
 }
 .banner-content h2 span{
     color: #3a80e9;

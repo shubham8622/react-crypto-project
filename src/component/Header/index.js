@@ -3,7 +3,12 @@ import './style.css';
 import {useState} from "react";
 import {Link} from 'react-router-dom';
 const Header = () =>{
-    let btnText = ["Dashboard"];
+    let btnText = [
+        {
+            title:"Dashboard",
+            url:"/dashboard"
+        }
+    ];
     const [active,setActive] = useState("");
     const handleMobileMenu = () =>{
         (active === "active")? setActive(""):setActive("active");
@@ -19,7 +24,7 @@ const Header = () =>{
                         <ul className="navigation">
                                 <li className="nav-items"><Link to="/">Home</Link></li>
                                 <li className="nav-items"><Link  to="/search">Search</Link></li>
-                                <li className="nav-items"><Link to="/about">About us</Link></li>
+                                <li className="nav-items"><Link to="/about">About me</Link></li>
                             <DashboardButton text={btnText}/>
                         </ul>
                         <div className="bars" id={active} onClick={handleMobileMenu}>

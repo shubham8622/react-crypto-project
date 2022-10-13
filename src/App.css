@@ -15,6 +15,9 @@ body{
   margin-inline: auto;
 }
 
+.view{
+  padding: 8rem 0 0 0;
+}
 
 /* Responsive css */
 

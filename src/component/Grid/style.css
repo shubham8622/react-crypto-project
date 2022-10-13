@@ -1,0 +1,84 @@
+.grid-view,
+.list-view{
+    padding: 1rem 0;
+}
+.grid-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    row-gap: 3rem;
+}
+.css-1ujnqem-MuiTabs-root {
+    width: 100%;
+}
+.css-13xfq8m-MuiTabPanel-root {
+    width: 100%;
+}
+.c-image {
+    width: 3rem;
+}
+
+.c-image img {
+    max-width: 100%;
+}
+
+.coin-detail {
+    display: flex;
+    justify-content: flex-start;
+    gap: 1rem;
+    align-items: center;
+}
+.g-card {
+    background-color: #333333;
+    width: 260px;
+    height: 260px;
+    border-radius: 15px;
+    padding: 0.8rem;
+}
+.c-percentage {
+    padding: 1rem 0 0.5rem 0;
+}
+.c-price p{
+        font-weight: 400;
+}
+.red{
+    color: red;
+}
+.green{
+    color: green;
+}
+.c-total-supply {
+    padding: 0.5rem 0;
+}
+.c-total-supply p{
+    font-size: 1rem;
+    font-weight: 400;
+}
+p span {
+    margin: 0.5rem 0;
+    display: inline-block;
+}
+.list-view .grid-card {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    row-gap: 3rem;
+    flex-direction: column;
+}
+.list-view .grid-card .g-card{
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.list-view .grid-card .g-card .coin-detail,
+.list-view .grid-card .g-card .c-percentage,
+.list-view .grid-card .g-card .c-price{
+    width: 10rem;
+}
+.list-view .grid-card .g-card .c-total-supply{
+    width: 19rem;
+}

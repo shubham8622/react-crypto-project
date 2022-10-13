@@ -3,7 +3,16 @@ import DashboardButton from '../Header/DashboardButton';
 import mobile from '../../images/mobile.png';
 import mobileBackground from '../../images/mobile-background.png';
 const HeroBanner = () => {
-    let btnText = ["Dashboard","Share"];
+    let btnText = [
+        {
+        title:"Dashboard",
+        url:"/dashboard"
+        },
+        {
+        title:"Share",
+        url:"/share"
+        }
+    ];
   return (
     <>
         <section>
