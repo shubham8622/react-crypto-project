@@ -30,7 +30,12 @@ const productSlice = createSlice({
 export default productSlice.reducer;
 
 export const fetchProducts = createAsyncThunk('/product/fetch',async()=>{
-    const res = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false");
+    const res = await fetch("https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&order=market_cap_desc&per_page=100&page=1&sparkline=false",{
+        mode: 'cors',
+        headers: {
+          'Access-Control-Allow-Origin':'*'
+        }
+        });
     const data = await res.json();
     return data;
 })

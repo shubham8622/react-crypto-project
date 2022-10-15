@@ -10,7 +10,7 @@ const Pagination = ({totalPosts,postPerPage,setCurrentPage,currentPage}) => {
         <div className='crypto-pagination'>
             {
                 pages.map((page,index)=>{
-                    return (<><button key = {page} onClick={()=>setCurrentPage(page)} className={(page === currentPage)?"active":""}>{page}</button></>)
+                    return (<><button key = {index} onClick={()=>setCurrentPage(page)} className={(page === currentPage)?"active":""}>{page}</button></>)
                 })
             }
         </div>

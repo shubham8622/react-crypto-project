@@ -2,6 +2,8 @@ import { useLayoutEffect } from "react";
 import { useDispatch,useSelector } from "react-redux"
 import {fetchProducts} from '../../store/fetchProduct';
 import {Link} from 'react-router-dom';
+import TrendingDownIcon from '@mui/icons-material/TrendingDown';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 const SearchItem = ({searchItem}) => {
     const dispatch = useDispatch();
     const {data} = useSelector((state)=>state.product);
@@ -17,12 +19,12 @@ const SearchItem = ({searchItem}) => {
                 <div className="container">
                     <div className="grid-card">
                     {
-                        (findItem.length !== 0)?
+                        (searchItem === "")?<><div className="no-coin-found"><h1>Start Searching Your Favourite Crypto Curriencies</h1></div></>:(findItem.length !== 0)?
                         findItem.map((detailCrypto)=>{
                             return(
                                     <>
                                     <Link to={`/coin?id=${detailCrypto.id}`} key={detailCrypto.id} className='crypto-links'>
-                                        <div className="g-card">
+                                        <div className="g-card" >
                                         <div className="coin-detail">
                                         <div className="c-image">
                                             <img src={detailCrypto.image} alt="error" />
@@ -34,7 +36,7 @@ const SearchItem = ({searchItem}) => {
                                         </div>
                                         <div className="c-percentage">
                                         <div className="c-per">
-                                        {(detailCrypto.ath_change_percentage < 0)?<p className='red'>{detailCrypto.ath_change_percentage}</p>:<p className='green'>{detailCrypto.ath_change_percentage}</p>}
+                                        {(detailCrypto.market_cap_change_percentage_24h < 0)?<><p className='red'>{detailCrypto.market_cap_change_percentage_24h}</p><div className="down-trend"><TrendingDownIcon/></div></>:<><p className='green'>{detailCrypto.market_cap_change_percentage_24h}</p><div className="up-trend"><TrendingUpIcon/></div></>}
                                         </div>
                                         </div>
                                         <div className="c-price">

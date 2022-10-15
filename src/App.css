@@ -24,6 +24,7 @@ body{
   align-items: center;
   gap: 2rem;
   padding: 2rem 0;
+  flex-wrap: wrap;
 }
 .crypto-pagination button {
   padding: 0.5rem 1rem;
@@ -49,6 +50,12 @@ section.search-view {
 .no-coin-found {
   margin-inline: auto;
   color: #ffffff;
+}
+.css-19kzrtu {
+  width: 100%;
+}
+section.chart-section {
+  padding: 10rem 0px;
 }
 /* Responsive css */
 

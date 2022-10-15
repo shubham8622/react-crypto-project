@@ -5,7 +5,6 @@ const Search = () => {
   const [searchItem,setSearchItem] = useState("");
   const handleSearch = (event)=>{
     event.preventDefault();
-    console.log(event.target.value)
     setSearchItem(event.target.value);
   }
   return (

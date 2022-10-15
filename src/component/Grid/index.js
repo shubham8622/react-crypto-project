@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import {fetchProducts} from '../../store/fetchProduct';
 import Pagination from '../Pagination/Pagination';
 import {Link} from 'react-router-dom';
+import TrendingDownIcon from '@mui/icons-material/TrendingDown';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import './style.css';
 const Grid = (props) => {
   const dispatch = useDispatch();
@@ -38,11 +40,11 @@ const Grid = (props) => {
                         </div>
                         <div className="c-percentage">
                           <div className="c-per">
-                          {(c.ath_change_percentage < 0)?<p className='red'>{c.ath_change_percentage}</p>:<p className='green'>{c.ath_change_percentage}</p>}
+                          {(c.market_cap_change_percentage_24h < 0)?<><p className='red'>{c.market_cap_change_percentage_24h.toFixed(2)}%</p><div className="down-trend"><TrendingDownIcon/></div></>:<><p className='green'>{c.market_cap_change_percentage_24h.toFixed(2)}%</p><div className="up-trend"><TrendingUpIcon/></div></>}
                           </div>
                         </div>
                         <div className="c-price">
-                          <p>Price ${c.current_price}</p>
+                          {(c.market_cap_change_percentage_24h < 0)?<p className="red price-color">${c.current_price}</p>:<p className='green price-color'>${c.current_price}</p>}
                         </div>
                         <div className="c-total-supply">
                           <p><span>Total Supply:</span> {c.total_supply} {c.symbol}</p>
