@@ -85,7 +85,10 @@ p span {
 }
 .list-view .grid-card .g-card .coin-detail,
 .list-view .grid-card .g-card .c-percentage,
-.list-view .grid-card .g-card .c-price{
+.list-view .grid-card .g-card .c-price,
+.chart-section .coin-detail,
+.chart-section .c-percentage,
+.chart-section .c-price{
     width: 10rem;
 }
 .list-view .grid-card .g-card .c-total-supply{

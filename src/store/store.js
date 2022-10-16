@@ -1,8 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import productSlice from '../store/fetchProduct'
+import productSlice from './fetchProduct'
 const store = configureStore({
     reducer:{ 
-        product:productSlice
+        product:productSlice,
+        // graph:graphDataSlice,
     }
 })
 

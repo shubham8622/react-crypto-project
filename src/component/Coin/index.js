@@ -3,21 +3,28 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useSearchParams } from "react-router-dom";
 import { Line } from "react-chartjs-2";
 import {fetchProducts} from '../../store/fetchProduct';
+import TrendingDownIcon from '@mui/icons-material/TrendingDown';
+import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import Chart from 'chart.js/auto';
 import {CategoryScale} from 'chart.js'; 
 import Header from '../Header'
+import Select from "@mui/material/Select";
+import MenuItem from "@mui/material/MenuItem";
 const Coin = () => {
     Chart.register(CategoryScale);
     const dispatch = useDispatch();
-    // const {data:coins} = useSelector((state)=>state.product);
-    // console.log(coins);
+    const detailData = useSelector(state=>state.product);
     const [searchParams] = useSearchParams();
     const [price,setPrice] = useState([]);
-    const [date,setDate] = useState();
+    const [days,setDays] = useState(30);
     let params = searchParams.get('id');
+    let detailCoinData = detailData.data.filter((ele)=>(ele.id === params)?ele:"");
+    useLayoutEffect(()=>{
+      dispatch(fetchProducts());
+    },[]);
     useLayoutEffect(()=>{
       let graphData = async () =>{
-        let res = await fetch(`https://api.coingecko.com/api/v3/coins/${params}/market_chart?vs_currency=usd&days=30`,{
+        let res = await fetch(`https://api.coingecko.com/api/v3/coins/${params}/market_chart?vs_currency=usd&days=${days}`,{
           mode: 'cors',
           headers: {
             'Access-Control-Allow-Origin':'*'
@@ -27,13 +34,29 @@ const Coin = () => {
         setPrice(res);
       }
       graphData();
-      // dispatch(fetchProducts());
     });
+    
     let today = new Date();
-    let priorDate = new Date(new Date().setDate(today.getDate() - 30));
+    let priorDate = new Date(new Date().setDate(today.getDate() - days));
+    var getDaysArray = function (starting, ending) {
+      for (
+        var a = [], d = new Date(starting);
+        d <= new Date(ending);
+        d.setDate(d.getDate() + 1)
+      ) {
+        a.push(new Date(d).getDate() + "/" + (new Date(d).getUTCMonth() + 1));
+      }
+      return a;
+    };
+    var dates_2 = getDaysArray(priorDate, today);
+    const priorDate_2 = new Date(
+      new Date().setDate(today.getDate() - days)
+    );
+    var dates_2 = getDaysArray(priorDate_2, today);
+
     // console.log(priorDate.getMonth());
     const data = {
-      labels: [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26,27,28,29,30],
+      labels: dates_2,
       datasets: [
         {
           label: "Trend",
@@ -44,12 +67,71 @@ const Coin = () => {
         }
       ]
     };
+    const handleChange = (event) =>{
+        setDays(event.target.value);
+    }
   return (
     <>
       <Header/>
       <section className='chart-section'>
         <div className="container">
-
+        {
+          detailCoinData?.map((c)=>{
+            return(
+              <>
+                  <div className="detail-card" key={c.id}>
+                        <div className="coin-detail">
+                          <div className="c-image">
+                            <img src={c.image} alt="error" />
+                          </div>
+                          <div className="c-tile">
+                            <h1>{c.name}</h1>
+                            <p>{c.symbol}</p>
+                          </div>
+                        </div>
+                        <div className="c-percentage">
+                          <div className="c-per">
+                          {(c.market_cap_change_percentage_24h < 0)?<><p className='red'>{c.market_cap_change_percentage_24h.toFixed(2)}%</p><div className="down-trend"><TrendingDownIcon/></div></>:<><p className='green'>{c.market_cap_change_percentage_24h.toFixed(2)}%</p><div className="up-trend"><TrendingUpIcon/></div></>}
+                          </div>
+                        </div>
+                        <div className="c-price">
+                          {(c.market_cap_change_percentage_24h < 0)?<p className="red price-color">${c.current_price}</p>:<p className='green price-color'>${c.current_price}</p>}
+                        </div>
+                        <div className="c-total-supply">
+                          <p><span>Total Supply:</span> {c.total_supply} {c.symbol}</p>
+                        </div>
+                  </div>
+              </>
+            )
+          })
+        }
+          <div className="select-days">
+              Price Change in the last 
+              <span>
+                <Select
+                  value={days}
+                  label="Days"
+                  onChange={handleChange}
+                  className="select-days"
+                  sx={{
+                    height: "2.5rem",
+                    color: "var(--white)",
+                    "& .MuiOutlinedInput-notchedOutline": {
+                      borderColor: "var(--white)",
+                    },
+                    "& .MuiSvgIcon-root": {
+                      color: "var(--white)",
+                    },
+                  }}
+                >
+                  <MenuItem value={7}>7</MenuItem>
+                  <MenuItem value={30} selected>30</MenuItem>
+                  <MenuItem value={60}>60</MenuItem>
+                  <MenuItem value={90}>90</MenuItem>
+                </Select>
+              </span>
+               days
+          </div>  
           <div className="main-chart">
             <Line data={data} />
           </div>
