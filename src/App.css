@@ -37,6 +37,7 @@ button.active{
 .crypto-links{
   color: #ffffff;
   text-decoration: none;
+  font-family: cursive;
 }
 .list-view .crypto-links{
   width: 100%;
@@ -65,10 +66,58 @@ section.chart-section {
   background-color: #333333;
   padding-inline: 1rem;
   border-radius: 1rem;
-  margin: 1rem;
+  margin: 1rem 0;
 }
-.select-days{
+.select-days {
   color: #ffffff;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+.rank img {
+  max-width: 3rem;
+}
+.coin-img {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 1rem;
+}
+.detail-rank img {
+  width: 4rem;
+}
+.detail-rank{
+  width: fit-content;
+}
+section.about {
+  padding: 8rem 0;
+  color: #ffffff;
+}
+.red-box .g-card:hover{
+  border: 2px solid red;
+}
+.green-box .g-card:hover{
+  border: 2px solid green;
+}
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #3a80e9;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
 /* Responsive css */
 

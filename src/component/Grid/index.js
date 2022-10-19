@@ -6,6 +6,9 @@ import {Link} from 'react-router-dom';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import './style.css';
+import rank1 from '../../images/badge.png';
+import rank2 from '../../images/second-rank.png';
+import rank3 from '../../images/third-rank.png';
 const Grid = (props) => {
   const dispatch = useDispatch();
   const {data:coins} = useSelector((state)=>state.product);
@@ -24,19 +27,22 @@ const Grid = (props) => {
           <div className="container">
             <div className="grid-card">
               {
-                coinsData.map((c)=>{
+                (coinsData)?coinsData.map((c)=>{
                   return(
                     <>
-                      <Link to={`/coin?id=${c.id}`} className='crypto-links'>
+                      <Link to={`/coin?id=${c.id}`} className={`crypto-links ${(c.market_cap_change_percentage_24h < 0)?"red-box":"green-box"}`}>
                         <div className="g-card" key={c.id}>
                         <div className="coin-detail">
-                          <div className="c-image">
-                            <img src={c.image} alt="error" />
+                          <div className="coin-img">
+                            <div className="c-image">
+                              <img src={c.image} alt="error" />
+                            </div>
+                            <div className="c-tile">
+                              <h1>{c.name}</h1>
+                              <p>{c.symbol}</p>
+                            </div>
                           </div>
-                          <div className="c-tile">
-                            <h1>{c.name}</h1>
-                            <p>{c.symbol}</p>
-                          </div>
+                            {(c.market_cap_rank === 1)?<><div className="rank"><img src = {rank1} alt="error"/></div></>:(c.market_cap_rank === 2)?<><div className="rank"><img src = {rank2} alt="error"/></div></>:(c.market_cap_rank === 3)?<><div className="rank"><img src = {rank3} alt="error"/></div></>:null}
                         </div>
                         <div className="c-percentage">
                           <div className="c-per">
@@ -47,13 +53,14 @@ const Grid = (props) => {
                           {(c.market_cap_change_percentage_24h < 0)?<p className="red price-color">${c.current_price}</p>:<p className='green price-color'>${c.current_price}</p>}
                         </div>
                         <div className="c-total-supply">
-                          <p><span>Total Supply:</span> {c.total_supply} {c.symbol}</p>
+                          <p><span>Total Supply:</span> {c.total_supply}</p>
+                          <p><span>Total Volume:</span> {c.total_volume}</p>
                         </div>
                         </div>
                       </Link>
                     </>
                   )
-                })
+                }):"Loading"
               }
             </div>
             <Pagination totalPosts={coins.length} postPerPage={postPerPage} setCurrentPage = {setCurrentPage} currentPage={currentPage}/>

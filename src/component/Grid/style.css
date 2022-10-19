@@ -5,7 +5,7 @@
 .grid-card {
     display: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
+    justify-content: center;
     align-items: center;
     row-gap: 3rem;
     column-gap: 5rem;
@@ -26,7 +26,7 @@
 
 .coin-detail {
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: 1rem;
     align-items: center;
 }
@@ -38,10 +38,10 @@
     padding: 0.8rem;
 }
 .c-percentage {
-    padding: 1rem 0;
+    padding: 0.5rem 0;
 }
 .c-price p{
-        font-weight: 400;
+    font-weight: 800;
 }
 .red{
     color: red;
@@ -58,10 +58,10 @@
     border-radius: 5rem;
 }
 .c-total-supply {
-    padding: 0.5rem 0;
+    /* padding: 0.5rem 0; */
 }
 .c-total-supply p{
-    font-size: 1rem;
+    font-size: 0.9rem;
     font-weight: 400;
 }
 p span {
