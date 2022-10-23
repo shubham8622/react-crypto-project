@@ -33,7 +33,9 @@ button.active{
   background-color: #3a80e9;
   color: #ffffff;
   cursor: pointer;
+  border: none;
 }
+
 .crypto-links{
   color: #ffffff;
   text-decoration: none;
@@ -64,7 +66,7 @@ section.chart-section {
   align-items: center;
   color: #ffffff;
   background-color: #333333;
-  padding-inline: 1rem;
+  padding: 1rem;
   border-radius: 1rem;
   margin: 1rem 0;
 }
@@ -119,6 +121,66 @@ section.about {
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+.show-chart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0;
+}
+.header-logo a {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 1.4rem;
+}
+.loader-center{
+  text-align: center;  
+  height: 100vh;
+  justify-content: center;
+  align-items: center;
+
+}
+.loader-center span{
+  margin-inline: auto;
+}
+
+/* 
+    Light Mode
+*/
+.light header .header-logo a {
+  color: #000000;
+}
+.light #Share a{
+  color: #85888b!important;
+}
+.light .search input{
+  background: #e3e6e8;
+  color: #000000;
+}
+.light .g-card {
+  background-color: #e3e6e8;
+  color: #000000;
+}
+.light .detail-card{
+  background: #e3e6e8;
+  color: #000000;
+}
+.light .red,
+.light .down-trend {
+  color: #b10101;
+  border: 2px solid #b10101;
+}
+.light .no-coin-found{
+  color: #000000;
+}
+.light button[tabindex="-1"]{
+  color: #000000;
+}
+.light .red-box .g-card:hover{
+  border-color:#b10101;
+}
+/* 
+  Linght mode end
+*/
 /* Responsive css */
 
 @media (max-width: 1280px){

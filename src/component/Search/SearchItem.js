@@ -22,7 +22,8 @@ const SearchItem = ({searchItem}) => {
                 <div className="container">
                     <div className="grid-card">
                     {
-                        (searchItem === "")?<><div className="no-coin-found"><h1>Start Searching Your Favourite Crypto Curriencies</h1></div></>:(findItem.length !== 0)?
+                        (searchItem === "")?<><div className="no-coin-found"><h1>Start Searching Your Favourite Crypto Curriencies</h1></div></>
+                        :(findItem.length !== 0)?
                         findItem.map((detailCrypto)=>{
                             return(
                                     <>

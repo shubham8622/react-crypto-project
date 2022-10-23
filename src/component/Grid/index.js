@@ -5,6 +5,8 @@ import Pagination from '../Pagination/Pagination';
 import {Link} from 'react-router-dom';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 import './style.css';
 import rank1 from '../../images/badge.png';
 import rank2 from '../../images/second-rank.png';
@@ -27,7 +29,7 @@ const Grid = (props) => {
           <div className="container">
             <div className="grid-card">
               {
-                (coinsData)?coinsData.map((c)=>{
+                (coinsData.length !== 0)?coinsData.map((c)=>{
                   return(
                     <>
                       <Link to={`/coin?id=${c.id}`} className={`crypto-links ${(c.market_cap_change_percentage_24h < 0)?"red-box":"green-box"}`}>
@@ -60,10 +62,12 @@ const Grid = (props) => {
                       </Link>
                     </>
                   )
-                }):"Loading"
+                }):<><Box sx={{ display: 'flex' }}>
+                <CircularProgress />
+              </Box></>
               }
             </div>
-            <Pagination totalPosts={coins.length} postPerPage={postPerPage} setCurrentPage = {setCurrentPage} currentPage={currentPage}/>
+            {(coinsData.length !== 0)?<><Pagination totalPosts={coins.length} postPerPage={postPerPage} setCurrentPage = {setCurrentPage} currentPage={currentPage}/></>:null}
           </div>
         </section>
     </>

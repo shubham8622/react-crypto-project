@@ -6,6 +6,10 @@ import {fetchProducts} from '../../store/fetchProduct';
 import {fetchAllPrices} from '../../store/productPriceForGraph';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 import TrendingUpIcon from '@mui/icons-material/TrendingUp';
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
 import Chart from 'chart.js/auto';
 import {CategoryScale} from 'chart.js'; 
 import Header from '../Header'
@@ -19,7 +23,7 @@ const Coin = () => {
     const dispatch = useDispatch();
     const detailData = useSelector(state=>state.product);
     const priceData = useSelector(state=>state.priceForGraph.info);
-    // const comparedPriceData = useSelector(state=>state.priceForComparedGraph.info);
+    const [selectGraphChart,setGraphChart] = useState("prices");
     const [searchParams] = useSearchParams();
     const [days,setDays] = useState(30);
     const [comparedCoin,setComparedCoin] = useState("");
@@ -27,7 +31,23 @@ const Coin = () => {
     let params = searchParams.get('id');
     let detailCoinData = detailData.data.filter((ele)=>(ele.id === params)?ele:"");
     let allComparedCoin = detailData.data.map((ele)=> (ele.id !== params)?(ele.id):"" );
-    
+    let btnText = [
+      {
+        "id":1,
+        "state":"prices",
+        "text":"Price"
+      },
+      {
+        "id":2,
+        "state":"market_caps",
+        "text":"Market Cap"
+      },
+      {
+        "id":3,
+        "state":"total_volumes",
+        "text":"Total Volume"
+      }
+    ]
     useLayoutEffect(()=>{
       dispatch(fetchProducts());
       dispatch(fetchAllPrices([params,days]));
@@ -62,7 +82,7 @@ const Coin = () => {
       datasets: [
         {
           label: "Trend 1",
-          data: priceData.prices?.map(ele=>ele[1]),
+          data: priceData[selectGraphChart]?.map(ele=>ele[1]),
           fill: true,
           backgroundColor: "rgba(75,192,192,0.2)",
           borderColor: "rgba(75,192,192,1)"
@@ -81,7 +101,14 @@ const Coin = () => {
   return (
     <>
       <Header/>
-      <section className='chart-section'>
+      {((detailCoinData.length === 0) && (priceData[selectGraphChart] !== 0) && (comparedPrice.prices !== 0))?
+      <>
+          <Box className = "loader-center" sx={{ display: 'flex' }}>
+            <CircularProgress />
+          </Box>
+        </>
+      :<>
+        <section className='chart-section'>
         <div className="container">
         {
           detailCoinData?.map((c)=>{
@@ -107,7 +134,8 @@ const Coin = () => {
                           {(c.market_cap_change_percentage_24h < 0)?<p className="red price-color">${c.current_price}</p>:<p className='green price-color'>${c.current_price}</p>}
                         </div>
                         <div className="c-total-supply">
-                          <p><span>Total Supply:</span> {c.total_supply} {c.symbol}</p>
+                          <p><span>Total Supply:</span> {c.total_supply}</p>
+                          <p><span>Total Volume:</span> {c.total_volume}</p>
                         </div>
                   </div>
               </>
@@ -170,11 +198,26 @@ const Coin = () => {
               </span>
               </p>
           </div>   
+          <div className="show-chart">
+          <Stack spacing={2} direction="row">
+            {
+              btnText.map((ele)=>{
+                return(
+                  <>
+                    <Button variant="outlined" onClick={()=>setGraphChart(ele.state)}>{ele.text}</Button>
+                  </>
+                )
+              })
+            }
+          </Stack>
+          </div>
           <div className="main-chart">
           <Line data={data} />
           </div>
         </div>  
-      </section>
+        </section>
+      </>
+      }
     </>
   )
 }
