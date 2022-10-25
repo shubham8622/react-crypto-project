@@ -2,16 +2,13 @@ import './style.css'
 import DashboardButton from '../Header/DashboardButton';
 import mobile from '../../images/mobile.png';
 import mobileBackground from '../../images/mobile-background.png';
+import Share from '../Share';
 const HeroBanner = () => {
     let btnText = [
         {
         title:"Dashboard",
         url:"/dashboard"
         },
-        {
-        title:"Share",
-        url:"/share"
-        }
     ];
   return (
     <>
@@ -23,6 +20,7 @@ const HeroBanner = () => {
                         <p>Track crypto through a public api in real time. Visit the dashboard to do so!</p>
                         <div className="banner-btn">
                             <DashboardButton text={btnText}/>
+                            <Share/>
                         </div>
                     </div>
                     <div className="hero-image">

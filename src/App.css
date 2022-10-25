@@ -149,8 +149,9 @@ section.about {
 .light header .header-logo a {
   color: #000000;
 }
-.light #Share a{
-  color: #85888b!important;
+.light div button.nav-links{
+  color: #7a7d80!important;
+  font-size: 1rem;
 }
 .light .search input{
   background: #e3e6e8;
