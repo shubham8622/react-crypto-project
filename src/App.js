@@ -17,6 +17,10 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 function App() {
   const whichMode = useSelector((state)=>state.lightMode.modeIs);
   const prefersDarkMode = useMediaQuery(`(prefers-color-scheme:${whichMode} )`);
+  React.useEffect(() => {
+    // document.getElementsByTagName('img').setAttribute('draggable', false);
+  }, [])
+  
   const theme = React.useMemo(
     () =>
       createTheme({

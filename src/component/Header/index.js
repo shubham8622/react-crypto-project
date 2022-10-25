@@ -38,7 +38,7 @@ const Header = () =>{
                                 <Switch checked = {state} onClick={handleMode}/>
                                 <li className="nav-items"><Link to="/">Home</Link></li>
                                 <li className="nav-items"><Link  to="/search">Search</Link></li>
-                                <li className="nav-items"><Link to="/about">About me</Link></li>
+                                {/* <li className="nav-items"><Link to="/about">About me</Link></li> */}
                             <DashboardButton text={btnText}/>
                         </ul>
                         <div className="bars" id={active} onClick={handleMobileMenu}>
@@ -46,7 +46,7 @@ const Header = () =>{
                             <ul className='mobile-nav'>
                                 <li className="nav-items"><Link to="/">Home</Link></li>
                                 <li className="nav-items"><Link  to="/search">Search</Link></li>
-                                <li className="nav-items"><Link to="/about">About us</Link></li>
+                                {/* <li className="nav-items"><Link to="/about">About us</Link></li> */}
                                 <DashboardButton text={btnText}/>
                             </ul>
                         </div>
