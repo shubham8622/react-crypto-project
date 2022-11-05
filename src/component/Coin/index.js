@@ -81,18 +81,18 @@ const Coin = () => {
       labels: dates_2,
       datasets: [
         {
-          label: "Trend 1",
+          label: `${params[0].toUpperCase()}${params.slice(1)}`,
           data: priceData[selectGraphChart]?.map(ele=>ele[1]),
           fill: true,
           backgroundColor: "rgba(75,192,192,0.2)",
           borderColor: "rgba(75,192,192,1)"
         },
         {
-          label: "Trend 2",
-          data: comparedPrice.prices?.map(ele=>ele[1]),
+          label:(comparedCoin === "")?"Select and compare":`${comparedCoin[0].toUpperCase()}${comparedCoin.slice(1)}`,
+          data: comparedPrice[selectGraphChart]?.map(ele=>ele[1]),
           fill: false,
           borderColor: "#742774"
-        },
+        }
       ]
     };
     const handleChange = (event) =>{
@@ -199,12 +199,17 @@ const Coin = () => {
               </p>
           </div>   
           <div className="show-chart">
-          <Stack spacing={2} direction="row">
+          <Stack spacing={2} direction="row" id="chartButton">
             {
               btnText.map((ele)=>{
                 return(
                   <>
-                    <Button variant="outlined" onClick={()=>setGraphChart(ele.state)}>{ele.text}</Button>
+                    <Button variant="outlined" className = {`${(ele.text === "Price")?"changeBg":""}`} onClick={(event)=>{setGraphChart(ele.state);
+                      let a = document.getElementById("chartButton").children;
+                      a = Array.prototype.slice.call( a )
+                      a.map((ele)=>(ele.classList.contains("changeBg"))?ele.classList.remove("changeBg"):"")
+                      event.target.classList.add("changeBg")
+                      }}>{ele.text}</Button>
                   </>
                 )
               })

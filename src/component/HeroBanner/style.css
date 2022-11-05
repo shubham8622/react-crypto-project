@@ -58,7 +58,7 @@ div button.nav-links{
 .banner-btn {
     display: flex;
     justify-content: flex-start;
-    gap: 3rem;
+    gap: 2rem;
     align-items: center;
 }
 .hero-image{
@@ -68,6 +68,18 @@ div button.nav-links{
 .hero-image img{
     max-width: 100%;
 }
+.hero-image img:first-child{
+    animation: languages 3s ease-in-out infinite;
+    position: relative;
+}
+@keyframes languages {
+    0%,100%{
+        bottom: 0;
+    }
+    50%{
+       bottom: 1rem;
+    }
+  }
 .mobile {
     position: absolute;
     z-index: 1;

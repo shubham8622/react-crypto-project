@@ -5,6 +5,7 @@ import {
   Route,
 } from "react-router-dom";
 import * as React from 'react';
+import {useRef} from 'react';
 import Search from './component/Search';
 import Home from './component/Home';
 import About from './component/About'
@@ -20,7 +21,14 @@ function App() {
   React.useEffect(() => {
     // document.getElementsByTagName('img').setAttribute('draggable', false);
   }, [])
-  
+  const updateMousePosition = (e) =>{
+    let circle = document.getElementById("circle");
+    let left = e.pageX;
+    let top = e.pageY;
+    circle.style.left = left + 'px';
+    circle.style.top = top + 'px';
+  }
+  window.addEventListener('mousemove', updateMousePosition);
   const theme = React.useMemo(
     () =>
       createTheme({
@@ -32,6 +40,9 @@ function App() {
   );
   return(
     <>
+    <div id="circle">
+
+    </div>
     <ThemeProvider theme={theme}>
       <Router>
         <Routes>

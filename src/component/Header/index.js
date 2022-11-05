@@ -34,16 +34,19 @@ const Header = () =>{
                         <div className="header-logo">
                             <Link to = "/">CryptoTracker</Link>
                         </div>
-                        <ul className="navigation">
-                                <Switch checked = {state} onClick={handleMode}/>
-                                <li className="nav-items"><Link to="/">Home</Link></li>
-                                <li className="nav-items"><Link  to="/search">Search</Link></li>
-                                {/* <li className="nav-items"><Link to="/about">About me</Link></li> */}
-                            <DashboardButton text={btnText}/>
-                        </ul>
+                        <div className="modes">
+                            <ul className="navigation">
+                                    <Switch checked = {state} onClick={handleMode}/>
+                                    <li className="nav-items"><Link to="/">Home</Link></li>
+                                    <li className="nav-items"><Link  to="/search">Search</Link></li>
+                                    {/* <li className="nav-items"><Link to="/about">About me</Link></li> */}
+                                <DashboardButton text={btnText}/>
+                            </ul>
+                        </div>
                         <div className="bars" id={active} onClick={handleMobileMenu}>
                             <i className="fa-solid fa-bars"></i>
                             <ul className='mobile-nav'>
+                                <Switch checked = {state} onClick={handleMode}/>
                                 <li className="nav-items"><Link to="/">Home</Link></li>
                                 <li className="nav-items"><Link  to="/search">Search</Link></li>
                                 {/* <li className="nav-items"><Link to="/about">About us</Link></li> */}
