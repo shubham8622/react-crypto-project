@@ -83,13 +83,13 @@ p span {
     justify-content: space-between;
     align-items: center;
 }
-.list-view .grid-card .g-card .coin-detail,
+/* .list-view .grid-card .g-card .coin-detail,
 .list-view .grid-card .g-card .c-price,
 .chart-section .coin-detail,
 .chart-section .c-percentage,
 .chart-section .c-price{
     width: 13rem;
-}
+} */
 .list-view .grid-card .g-card .c-total-supply{
     width: 19rem;
 }

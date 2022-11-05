@@ -6,9 +6,9 @@ import Switch from '@mui/material/Switch';
 import { useDispatch } from 'react-redux';
 import {changeMode} from '../../store/lightMode';
 const Header = () =>{
-    
+    let currMode = localStorage.getItem("theme");
     const dispatch = useDispatch();
-    const [state,setState] = useState(false);
+    const [state,setState] = useState((currMode === "dark")?false:true);
     const handleMode = () =>{
         setState((state)?false:true);
         dispatch(changeMode((state)?"dark":"light"));
@@ -36,7 +36,7 @@ const Header = () =>{
                         </div>
                         <div className="modes">
                             <ul className="navigation">
-                                    <Switch checked = {state} onClick={handleMode}/>
+                                    <Switch checked = {(state)} onClick={handleMode}/>
                                     <li className="nav-items"><Link to="/">Home</Link></li>
                                     <li className="nav-items"><Link  to="/search">Search</Link></li>
                                     {/* <li className="nav-items"><Link to="/about">About me</Link></li> */}

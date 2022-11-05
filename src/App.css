@@ -72,6 +72,7 @@ section.chart-section {
   padding: 1rem;
   border-radius: 1rem;
   margin: 1rem 0;
+  flex-wrap: wrap;
 }
 .select-days {
   color: #ffffff;
@@ -197,6 +198,18 @@ div#circle {
   border: 2px solid #3a80e9;
   border-radius: 2rem;
 }
+.light .css-g14wdk-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root .MuiOutlinedInput-notchedOutline {
+  border-color: #000000;
+}
+.light .select-days {
+  color: #000000;
+}
+.light .MuiSelect-select.MuiSelect-outlined.MuiInputBase-input.MuiOutlinedInput-input.css-11u53oe-MuiSelect-select-MuiInputBase-input-MuiOutlinedInput-input {
+  color: #000000;
+}
+.light .css-g14wdk-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root .MuiSvgIcon-root{
+  color: #000000;
+}
 /* 
   Linght mode end
 */
@@ -282,6 +295,9 @@ div#circle {
     display: flex;
     flex-wrap: wrap;
     text-align: center;
+  }
+  .c-total-supply {
+    /* margin-inline: auto; */
   }
 } 
 
