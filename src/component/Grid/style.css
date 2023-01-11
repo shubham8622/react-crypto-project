@@ -82,6 +82,8 @@ p span {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
 }
 /* .list-view .grid-card .g-card .coin-detail,
 .list-view .grid-card .g-card .c-price,
