@@ -117,7 +117,7 @@ p span {
     text-align: center;
 }
 p.price-color {
-    border: none;
+    border: none!important;
 }
 .c-tile p {
     font-size: 0.8rem;
